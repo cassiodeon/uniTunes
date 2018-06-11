@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top navbar-unitunes">
+        <div class="container">
+            <div class="navbar-header">
+                <a href='@Url.Action("Index", "Home")' class="navbar-brand">
+                    <span class="glyphicon glyphicon-music" aria-hidden="true"></span>
+                    UniTunes
+                </a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Favoritos <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Músicas", "Index", "Favoritos", new { tipo = 0 },null)</li>
+                            <li>@Html.ActionLink("Videos", "Index", "Favoritos", new { tipo = 1 }, null)</li>
+                            <li>@Html.ActionLink("Podcasts", "Index", "Favoritos", new { tipo = 2 }, null)</li>
+                            <li>@Html.ActionLink("Livros", "Index", "Favoritos", new { tipo = 3 }, null)</li>
+                        </ul>
+                    </li>
+
+                    <li>@Html.ActionLink("Músicas", "Index", "Musicas")</li>
+                    <li>@Html.ActionLink("Albums", "Index", "Albums")</li>
+                    <li>@Html.ActionLink("Video", "Index", "Videos")</li>
+                    <li>@Html.ActionLink("Podcasts", "Index", "Podcasts")</li>
+                    <li>@Html.ActionLink("Livros", "Index", "Livros")</li>
+                    
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
+                    }
+
+                </ul>
+                
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>@DateTime.Now.Year - Unitunes</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

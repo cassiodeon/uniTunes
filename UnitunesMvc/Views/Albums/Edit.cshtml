@@ -1,0 +1,77 @@
+﻿@model UnitunesMvc.Core.Database.Entities.Album
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>Album</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.Id)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Titulo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Titulo, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Titulo, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Preco, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Preco, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Preco, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Lancamento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Lancamento, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Lancamento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @foreach (var musica in Model.Musicas)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => musica.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => musica.Duracao)
+                </td>                
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = musica.Id }) |
+                    @Html.ActionLink("Detalhes", "Details", new { id = musica.Id }) |
+                    @Html.ActionLink("Remover", "Delete", new { id = musica.Id }) |
+                    @Html.ActionLink("Favoritar", "Add", "Favoritos", new { id = musica.Id }, null) |
+                    @Html.ActionLink("Carrinho", "Add", "Carrinho", new { id = musica.Id }, null)
+                </td>
+            </tr>
+        }
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

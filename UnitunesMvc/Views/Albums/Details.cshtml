@@ -1,0 +1,60 @@
+﻿@model UnitunesMvc.Core.Database.Entities.Album
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Album</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Titulo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Titulo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.Lancamento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lancamento)
+        </dd>
+
+        <dt>
+            @Html.DisplayFor(model => model.Musicas)
+        </dt>
+
+        <dd>
+            @foreach (var musica in Model.Musicas)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => musica.Nome)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => musica.Duracao)
+                    </td>                    
+                </tr>
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

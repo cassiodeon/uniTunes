@@ -1,0 +1,60 @@
+﻿@model IEnumerable<UnitunesMvc.Core.Database.Entities.VendaItem>
+
+@{
+    ViewBag.Title = "Venda";
+}
+
+<h2>Venda</h2>
+
+<p>
+   @(ViewBag.Data) 
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Midia.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valor)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Midia.Nome)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Valor)
+        </td>
+    </tr>
+}
+
+</table>
+
+<dl class="dl-horizontal">
+    <dt>
+        Total
+    </dt>
+
+    <dd>
+        @(ViewBag.Total)
+    </dd>
+    <dt>
+        Vendedor
+    </dt>
+
+    <dd>
+        @(ViewBag.Vendedor)
+    </dd>
+    <dt>
+        Comprador
+    </dt>
+
+    <dd>
+        @(ViewBag.Comprador)
+    </dd>
+
+</dl>
