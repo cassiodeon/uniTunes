@@ -18,13 +18,13 @@ namespace UnitunesMvc.Controllers
         private TipoMidia m_tipoMidia = TipoMidia.Musica;
         private TipoStreaming m_tipoStreaming = TipoStreaming.Musica;
 
-        // GET: Videos
+        // GET: Musicas
         public ActionResult Index(string pesquisa, string categoria)
         {
             ViewBag.Categorias = new CategoriaViewModel().DeterminarCategoriasViewBag(m_tipoMidia);
 
             var musicas = db.Streamings.Where(
-                video => video.TipoStreaming == m_tipoStreaming).Include(x => x.Categoria);
+                musica => musica.TipoStreaming == m_tipoStreaming).Include(x => x.Categoria);
 
             if (!String.IsNullOrEmpty(pesquisa))
             {
@@ -39,7 +39,7 @@ namespace UnitunesMvc.Controllers
             return View(musicas.ToList());
         }
 
-        // GET: Videos/Details/5
+        // GET: Musicas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -54,16 +54,14 @@ namespace UnitunesMvc.Controllers
             return View(streaming);
         }
 
-        // GET: Videos/Create
+        // GET: Musicas/Create
         public ActionResult Create()
         {
             ViewBag.Categorias = new CategoriaViewModel().DeterminarCategoriasViewBag(m_tipoMidia);
             return View();
         }
 
-        // POST: Videos/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Musicas/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Duracao,Tipo,Nome,Descricao,Preco,CategoriaId")] Streaming streaming, HttpPostedFileBase imagem, HttpPostedFileBase conteudo)
@@ -95,7 +93,7 @@ namespace UnitunesMvc.Controllers
             return View(streaming);
         }
 
-        // GET: Videos/Edit/5
+        // GET: Musicas/Edit/id
         public ActionResult Edit(int? id)
         {
             ViewBag.Categorias = new CategoriaViewModel().DeterminarCategoriasViewBag(m_tipoMidia);
@@ -128,7 +126,7 @@ namespace UnitunesMvc.Controllers
             return View(streaming);
         }
 
-        // GET: Videos/Delete/5
+        // GET: Musicas/Delete/id
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -143,7 +141,7 @@ namespace UnitunesMvc.Controllers
             return View(streaming);
         }
 
-        // POST: Videos/Delete/5
+        // POST: Musicas/Delete/id
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

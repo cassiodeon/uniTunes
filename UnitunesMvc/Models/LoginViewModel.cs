@@ -12,7 +12,7 @@ namespace UnitunesMvc.Models
         private UnitunesEntities db = new UnitunesEntities();
 
         [Required]
-        [Display(Name = "E-Mail")]
+        [Display(Name = "E-mail")]
         public string Email{ get; set; }
 
         [Required]

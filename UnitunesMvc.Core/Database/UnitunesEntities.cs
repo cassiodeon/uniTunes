@@ -61,7 +61,7 @@ namespace UnitunesMvc.Core.Database.Entities
             cs.AppendFormat("Database={0};", DB_NAME);
             cs.AppendFormat("User Id={0};", DB_USER);
             cs.AppendFormat("Password={0};", DB_PASS);
-            return "Data Source=(LocalDB)\\MSSQLLocalDB; AttachDbFilename = D:\\Repositories\\UnitunesMvc\\UnitunesMvc\\UnitunesMvc.Core\\Database\\Database_Unitunes.mdf; Integrated Security = True";
+            return "Data Source=(LocalDB)\\MSSQLLocalDB; AttachDbFilename = C:\\Workspace\\uniTunes\\UnitunesMvc.Core\\Database\\Database_Unitunes.mdf; Integrated Security = True";
             //return cs.ToString();
         }
 
