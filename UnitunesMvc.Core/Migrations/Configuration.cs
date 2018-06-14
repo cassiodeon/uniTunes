@@ -17,9 +17,9 @@ namespace UnitunesMvc.Core.Migrations
     //    {
     //        context.Usuarios.AddOrUpdate(
     //            new Usuario {
-    //                Email = "felipe@email.com",
-    //                PrimeiroNome = "Felipe",
-    //                UltimoNome = "Silva",
+    //                Email = "cassio@email.com",
+    //                PrimeiroNome = "Cássio",
+    //                UltimoNome = "Deon",
     //                Senha = "123456"
     //            }
     //        );

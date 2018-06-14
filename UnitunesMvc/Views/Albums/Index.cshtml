@@ -1,7 +1,9 @@
-﻿@model IEnumerable<UnitunesMvc.Core.Database.Entities.Album>
+﻿@using UnitunesMvc.Core.Database.Entities
+@model IEnumerable<UnitunesMvc.Core.Database.Entities.Album>
 
 @{
-    ViewBag.Title = "Albuns";
+    ViewBag.Title = "UniTunes - Albuns";
+    Usuario user = ViewBag.UsuarioLogado;
 }
 
 <h2>Albuns</h2>
@@ -54,9 +56,9 @@
             @Html.DisplayFor(modelItem => item.Lancamento)
         </th>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.Id }) |
             @Html.ActionLink("Detalhes", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Remover", "Delete", new { id=item.Id })
+            @(user.Id == item.Autor.Id ? Html.ActionLink("Editar", "Edit", new { id = item.Id }) : MvcHtmlString.Empty)
+            @(user.Id == item.Autor.Id ? @Html.ActionLink("Remover", "Delete", new { id = item.Id }) : MvcHtmlString.Empty)
         </td>
     </tr>
 }

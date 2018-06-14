@@ -1,7 +1,9 @@
-﻿@model IEnumerable<UnitunesMvc.Core.Database.Entities.Streaming>
+﻿@using UnitunesMvc.Core.Database.Entities
+@model IEnumerable<UnitunesMvc.Core.Database.Entities.Streaming>
 
 @{
-    ViewBag.Title = "Podcasts";
+    ViewBag.Title = "UniTunes - Podcasts";
+    Usuario user = ViewBag.UsuarioLogado;
 }
 
 <h2>
@@ -33,7 +35,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Duracao)
+            @Html.DisplayNameFor(model => model.Id)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
@@ -42,15 +44,18 @@
             @Html.DisplayNameFor(model => model.Descricao)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Preco)
         </th>
-        <th></th>
+        <th class="text-center">Ações</th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Duracao)
+            @Html.DisplayFor(modelItem => item.Id)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Nome)
@@ -58,15 +63,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.Descricao)
         </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.Categoria.Nome)
+        </th>
         <td>
             @Html.DisplayFor(modelItem => item.Preco)
         </td>
         <td>
-            @Html.ActionLink("Editar", "Edit", new { id = item.Id }) |
             @Html.ActionLink("Detalhes", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Remover", "Delete", new { id = item.Id }) |
             @Html.ActionLink("Favoritar", "Add", "Favoritos", new { id = item.Id }, null) |
-            @Html.ActionLink("Carrinho", "Add", "Carrinho", new { id = item.Id }, null)
+            @(user.Id != item.AutorId ? @Html.ActionLink("Carrinho", "Add", "Carrinho", new { id = item.Id }, null) : MvcHtmlString.Empty) |
+            @(user.Id == item.AutorId ? Html.ActionLink("Editar", "Edit", new { id = item.Id }) : MvcHtmlString.Empty)
+            @(user.Id == item.AutorId ? @Html.ActionLink("Remover", "Delete", new { id = item.Id }) : MvcHtmlString.Empty)
         </td>
     </tr>
 }

@@ -283,9 +283,9 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UnitunesMvc.Core\UnitunesMvc.Core.csproj">
+    <ProjectReference Include="..\UnitunesMvc.Core\Domain.csproj">
       <Project>{8640c0a1-f0f8-43ab-b97f-1e3645a73811}</Project>
-      <Name>UnitunesMvc.Core</Name>
+      <Name>Domain</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

@@ -21,6 +21,8 @@ namespace UnitunesMvc.Controllers
         public ActionResult Index(string pesquisa, string categoria)
         {
             ViewBag.Categorias = new CategoriaViewModel().DeterminarCategoriasViewBag(m_tipoMidia);
+            ViewBag.UsuarioLogado = new LoginViewModel().Buscar(User.Identity.Name);
+
             var livros =  from l in db.Livros.Include(x => x.Categoria) select l;
 
             if (!String.IsNullOrEmpty(pesquisa))

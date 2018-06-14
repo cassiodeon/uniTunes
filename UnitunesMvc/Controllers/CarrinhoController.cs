@@ -91,7 +91,7 @@ namespace UnitunesMvc.Controllers
                 return RedirectToAction("Details", "Vendas", new { id = vendaId });
             }
 
-            return RedirectToAction("Index", "Carrinho", new { erro = "Pague o Aluguel" });
+            return RedirectToAction("Index", "Carrinho", new { erro = "Você não possui créditos (saldo)." });
         }
 
         public ActionResult Esvaziar(int? id)

@@ -21,12 +21,31 @@ public class Album
     {
         [Key]
         public int Id { get; set; }
+
+        [Required]
+        [Display(Name = "Título")]
         public string Titulo { get; set; }
+
+        [Display(Name = "Preço")]
         public decimal Preco { get; set; }
+
+        [Display(Name = "Lançamento")]
         public string Lancamento { get; set; }
+
+        //[ForeignKey("Genero")]
+        [Display(Name = "Gênero")]
+        public Categoria Genero_Id { get; set; }
+
+        [Display(Name = "Gênero")]
         public Categoria Genero { get; set; }
-        public Autor Autor { get; set; }
+
+        [ForeignKey("Autor")]
+        [Display(Name = "Autor")]
+        public int Autor_Id { get; set; }
+
+        [Display(Name = "Autor")]
+        public virtual Autor Autor { get; set; }
         
-        public List<Streaming> Musicas { get; set; }
+        public virtual List<Streaming> Musicas { get; set; }
     } 
 }

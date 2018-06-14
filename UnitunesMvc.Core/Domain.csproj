@@ -7,8 +7,8 @@
     <ProjectGuid>{8640C0A1-F0F8-43AB-B97F-1E3645A73811}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>UnitunesMvc.Core</RootNamespace>
-    <AssemblyName>UnitunesMvc.Core</AssemblyName>
+    <RootNamespace>Domain</RootNamespace>
+    <AssemblyName>Domain</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -213,9 +213,9 @@
     <Compile Include="Database\Entities\Venda.cs" />
     <Compile Include="Database\Entities\VendaItem.cs" />
     <Compile Include="Database\UnitunesEntities.cs" />
-    <Compile Include="Migrations\201506090715023_Initial.cs" />
-    <Compile Include="Migrations\201506090715023_Initial.Designer.cs">
-      <DependentUpon>201506090715023_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\_Initial.cs" />
+    <Compile Include="Migrations\_Initial.Designer.cs">
+      <DependentUpon>_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -229,8 +229,8 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.1.0.0-rc2\tools\analyzers\C#\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201506090715023_Initial.resx">
-      <DependentUpon>201506090715023_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\_Initial.resx">
+      <DependentUpon>_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

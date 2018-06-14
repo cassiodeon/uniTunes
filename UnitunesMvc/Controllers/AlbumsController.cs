@@ -27,7 +27,7 @@ namespace UnitunesMvc.Controllers
                 current_order = Ordem.Novo;
                
             ViewBag.Ordem = new OrdemViewModel().DeterminarOrdemViewBag(current_order);
-            var albuns = from l in db.Albums.Include(x => x.Titulo) select l;          
+            var albuns = from l in db.Albums select l;          
 
             if (!String.IsNullOrEmpty(pesquisa))
             {
@@ -40,7 +40,7 @@ namespace UnitunesMvc.Controllers
                 else if (current_order == Ordem.Recente)
                     albuns = albuns.Where(s => (DateTime.Now - Convert.ToDateTime(s.Lancamento)).TotalDays > 60);
             }
-
+            ViewBag.UsuarioLogado = new LoginViewModel().Buscar(User.Identity.Name);
             return View(albuns.ToList());
         }
 

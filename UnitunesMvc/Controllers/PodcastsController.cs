@@ -22,6 +22,7 @@ namespace UnitunesMvc.Controllers
         public ActionResult Index(string pesquisa, string categoria)
         {
             ViewBag.Categorias = new CategoriaViewModel().DeterminarCategoriasViewBag(m_tipoMidia);
+            ViewBag.UsuarioLogado = new LoginViewModel().Buscar(User.Identity.Name);
 
             var videos = db.Streamings.Where(
                 video => video.TipoStreaming == m_tipoStreaming).Include(x => x.Categoria);
